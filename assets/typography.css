@@ -6,10 +6,39 @@
     letter-spacing: 0;
     text-transform: uppercase;
 }
-.heading-text-large-thin{
+.heading-text-v2{
     font-family: var(--font-heading-family);
     font-weight: 100;
     font-size: 2.4rem;
+    line-height: 3rem;
+    letter-spacing: 0;
+}
+.heading-extra-large{
+    font-family: var(--font-heading-family);
+    font-weight: 100;
+    font-size: 4.6rem;
+    line-height: 4.6rem;
+    letter-spacing: 1.4px;
+}
+.heading-extra-large-v2{
+     font-family: var(--font-heading-family);
+    font-weight: 100;
+    font-size: 3.6rem;
+    line-height: 3.6rem;
+    letter-spacing: 1.1px;
+}
+.heading-extra-medium{
+    font-family: var(--font-heading-family);
+    font-weight: 100;
+    font-size: 1.8rem;
+    line-height: 2.4rem;
+    letter-spacing: .5px;
+
+}
+.heading-text-large-thin{
+    font-family: var(--font-heading-family);
+    font-weight: 100;
+    font-size: 2.8rem;
     line-height: 2.8rem;
     letter-spacing: .8px;
 }
@@ -20,13 +49,40 @@
     line-height: 2.8rem;
     letter-spacing: .7px;
 }
+.heading-text-thin-medium{
+    font-family: var(--font-heading-family);
+    font-weight: 100;
+    font-size: 2rem;
+    line-height: 2rem;
+    letter-spacing: .6px;
+}
 .heading-text-small-thin{
     font-family: var(--font-heading-family);
     font-weight: 100;
     font-size: 1.6rem;
     line-height: 1.2rem;
     letter-spacing: .5px;
-
+}
+.heading-text-small-thin-v2{
+    font-family: var(--font-heading-family);
+    font-weight: 100;
+    font-size: 1.6rem;
+    line-height: 2.2rem;
+    letter-spacing: .5px;
+}
+.heading-text-extra-small{
+    font-family: var(--font-heading-family);
+    font-weight: 100;
+    font-size: 1.4rem;
+    line-height: 2rem;
+    letter-spacing: .4px;
+}
+.heading-text-extra-small-v3{
+    font-family: var(--font-heading-family);
+    font-weight: 100;
+    font-size: 1.4rem;
+    line-height: 1.4rem;
+    letter-spacing: .4px;
 }
 .body-text-small{
     font-family: var(--font-body-family);
@@ -42,6 +98,13 @@
     line-height: 1.8rem;
     letter-spacing: 0;
 }
+.body-text-medium-large{
+    font-family: var(--font-body-family);
+    font-weight: 400;
+    font-size: 2rem;
+    line-height: 2.4rem;
+    letter-spacing: 0;
+}
 .body-text-medium{
     font-family: var(--font-body-family);
     font-weight: 400;
@@ -49,11 +112,18 @@
     line-height: 1.4rem;
     letter-spacing: 0;
 }
+.body-text-medium-v2{
+    font-family: var(--font-body-family);
+    font-weight: 400;
+    font-size: 1.6rem;
+    line-height: 2.2rem;
+    letter-spacing: 0;
+}
 .body-text{
     font-family: var(--font-body-family);
     font-weight: 400;
     font-size: 1.4rem;
-    line-height: 2rem;
+    line-height: 1.8rem;
     letter-spacing: 0;
 }
 .body-text-v2{
@@ -84,6 +154,20 @@
     line-height: 1rem;
     letter-spacing: 0;
 }
+.body-text-v6{
+    font-family: var(--font-body-family);
+    font-weight: 400;
+    font-size: 1.4rem;
+    line-height: 1.8rem;
+    letter-spacing: 0;
+}
+.body-text-v7{
+    font-family: var(--font-body-family);
+    font-weight: 400;
+    font-size: 1.4rem;
+    line-height: 2.1rem;
+    letter-spacing: 0;
+}
 .body-text-extra-small{
     font-family: var(--font-body-family);
     font-weight: 400;
@@ -96,6 +180,13 @@
     font-weight: 100;
     font-size: 2rem;
     line-height: 2.8rem;
+    letter-spacing: 0;
+}
+.bubble-text{
+    font-family: var(--font-body-family);
+    font-weight: 400;
+    font-size: .8rem;
+    line-height: .7rem;
     letter-spacing: 0;
 }
 @media screen and (max-width: 768px) {
@@ -113,6 +204,13 @@
         line-height: 2.4rem;
         letter-spacing: .7px;
     }
+    .small-heading-text-large-thin-v2{
+        font-family: var(--font-heading-family);
+        font-weight: 100;
+        font-size: 2.6rem;
+        line-height: 2.6rem;
+        letter-spacing: .8px;
+    }
     .small-body-text-v3{
         font-family: var(--font-body-family);
         font-weight: 400;
@@ -127,6 +225,13 @@
         line-height: 1.2rem;
         letter-spacing: 0;
     }
+     .small-body-text-large-v2{
+        font-family: var(--font-body-family);
+        font-weight: 400;
+        font-size: 1.8rem;
+        line-height: 2.2rem;
+        letter-spacing: 0;
+    }
     .small-body-text-v2{
         font-family: var(--font-body-family);
         font-weight: 400;
@@ -139,6 +244,34 @@
         font-weight: 400;
         font-size: 1.4rem;
         line-height: 1.4rem;
+        letter-spacing: 0;
+    }
+    .small-heading-extra-large{
+        font-family: var(--font-heading-family);
+        font-weight: 100;
+        font-size: 4rem;
+        line-height: 4rem;
+        letter-spacing: 1.2px;
+    }
+    .small-heading-extra-large-v2{
+        font-family: var(--font-heading-family);
+        font-weight: 100;
+        font-size: 2.8rem;
+        line-height: 2.8rem;
+        letter-spacing: 0.8px;
+    }
+    .small-heading-extra-large-v3{
+        font-family: var(--font-heading-family);
+        font-weight: 100;
+        font-size: 3rem;
+        line-height: 3rem;
+        letter-spacing: 0.9px;
+    }
+    .small-heading-text-v2{
+        font-family: var(--font-heading-family);
+        font-weight: 100;
+        font-size: 2rem;
+        line-height: 2.6rem;
         letter-spacing: 0;
     }
 }

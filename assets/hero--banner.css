@@ -33,7 +33,7 @@
 }
 .video-banner .video-content__description i,
 .video-banner .video-content__description em{
-    font-family: var(--font-heading-family-thin-italic);
+    font-family: var(--font-heading-family-italic);
 }
 .video-banner .video-banner-content.content-align-center-left{
     top:50%;

@@ -19,6 +19,7 @@
  aspect-ratio: 335 / 335;
  height: 100%;
  width: 100%;
+ border-radius: var(--image-radius);
 }
 .collection-carousel .collection-name{
   position: absolute;
@@ -34,7 +35,7 @@
   margin-top: 2rem;
 }
 .collection-carousel .collection-bottom-text span{
- font-family: var(--font-heading-family-thin-italic);
+ font-family: var(--font-heading-family-italic);
 }
 
 @media screen and (max-width: 768px) {

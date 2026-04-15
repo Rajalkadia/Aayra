@@ -34,7 +34,7 @@
 
 .shop-the-look i,
 .shop-the-look em{
-  font-family: var(--font-heading-family-thin-italic);
+  font-family: var(--font-heading-family-italic);
 }
 
 .shop-the-look-product-inner .product_heading:not(:last-child){

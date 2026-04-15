@@ -401,10 +401,14 @@
     transition: transform var(--duration-long) ease;
     transform: scale(1.03);
   }
-
-  .underline-links-hover:hover a {
-    text-decoration: underline;
-    text-underline-offset: 0.3rem;
+  .underline-links-hover .card__heading{
+    transition: opacity .3s ease-in-out;
+  }
+  .underline-links-hover:hover .card__heading  {
+    /* text-decoration: underline;
+    text-underline-offset: 0.3rem; */
+    opacity: .5;
+    transition: opacity .3s ease-in-out;
   }
 }
 

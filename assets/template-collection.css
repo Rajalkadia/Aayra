@@ -22,11 +22,17 @@
     top: 0;
     right: 0;
   }
+  .product-grid {
+    margin-top: 1.8rem;
+  }
 }
 
 @media screen and (min-width: 769px) {
   .collection .loading-overlay {
     left: 0;
+  }
+  .product-grid {
+    margin-top: 2rem;
   }
 }
 
@@ -108,4 +114,8 @@
   .collection-banner img{
     aspect-ratio: 167/167;
   }
+}
+
+.product-grid-container .collection .collection-badge-wish-wrappper{
+  width: 100%;
 }
