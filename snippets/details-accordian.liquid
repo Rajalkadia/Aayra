@@ -251,7 +251,7 @@
           {% capture stone_clarity_key %}stone_{{ i }}_clarity{% endcapture %}
           {% capture stone_color_key %}stone_{{ i }}_color{% endcapture %}
 
-          {% assign type_val = product.metafields.custom[stone_type_key] | downcase %}
+          {% comment %} {% assign type_val = product.metafields.custom[stone_type_key] | downcase %} {% endcomment %}
 
           <tr class="details-item">
             {% if show_stone == true %}

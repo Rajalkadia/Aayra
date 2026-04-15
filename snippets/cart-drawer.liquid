@@ -208,7 +208,7 @@
                                             %}
                                             {% if file_types contains file_type %}
                                               <div class="bcpo-cart-file">
-                                                <img src="{{ property.last }}" style="max-width: 50px; height: auto;">
+                                                 {{ property.last | image_url: width: 50 | image_tag: width: 50, height: 'auto', style: 'max-width: 50px;' }}
                                               </div>
                                             {% else %}
                                               <span class="bcpo-cart-file">Uploaded file</span>
@@ -222,7 +222,7 @@
                                             %}
                                             {% if file_types contains file_type %}
                                               <div class="bcpo-cart-file">
-                                                <img src="{{ property.last }}" style="max-width: 50px; height: auto;">
+                                               {{ property.last | image_url: width: 50 | image_tag: width: 50, height: 'auto', style: 'max-width: 50px;' }}
                                               </div>
                                             {% else %}
                                               <span class="bcpo-cart-file">Uploaded file</span>
