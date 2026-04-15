@@ -1,0 +1,96 @@
+.testimonials-carousel .testimonial-user-wrapper img{
+  width: 100%;
+  height: 100%;
+  max-width: 3.2rem;
+  max-height: 3.2rem;
+}
+
+testimonials-carousel .testimonials-carousel-wrapper{
+  /* padding-block: 2rem; */
+  background: var(--content-background);
+}
+.testimonials-carousel .stars-wrapper .star-svg svg{
+  color: var(--star-color);
+  width: 1.2rem;
+  height: 1.2rem;
+}
+.testimonials-carousel .stars-wrapper .star-svg.fill svg > *{
+ fill: currentColor
+}
+.testimonials-carousel .stars-wrapper{
+  gap: .2rem;
+}
+.testimonials-carousel  .testimonial-content-wrapper{
+ /* align-items: center; */
+ flex-direction: column;
+ gap:1.5rem;
+}
+.testimonials-carousel .testimonial-card:not(:last-child)::after{
+    content: "";
+    position: absolute;
+    width: 1px;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    right: -2rem;
+}
+.testimonials-carousel .testimonial-card{
+  min-height: 30rem;
+  flex-direction:  column;
+  justify-content: space-between;
+  gap: 2rem;
+  padding-block:2rem;
+  height: auto;
+}
+.testimonials-carousel:has(.testimonial-media) .testimonial-card{
+  min-height: 60rem;
+}
+.testimonials-carousel .testimonial-user-wrapper .user-wrapper{
+  align-items: center;
+  gap: 1rem;
+}
+.testimonials-carousel .testimonial-user-wrapper {
+  align-items: center;
+  gap: 1rem;
+  justify-content: space-between;
+  /* margin-bottom:.5rem; */
+}
+.testimonial-media img{
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 250 / 250;
+}
+.testimonial-media{
+   aspect-ratio: 250 / 250;
+}
+.testimonial-product svg{
+  width: 2.4rem;
+  height: 2.4rem;
+  rotate: 315deg;
+}
+.testimonial-product{
+  border: 1px solid;
+  border-radius: 100%;
+  width: 36px;
+  height: 36px;
+  align-items: center;
+  justify-content: center;
+  transition: opacity .3s ease-in-out;
+}
+.testimonial-product:hover{
+  opacity: .5;
+  transition: opacity .3s ease-in-out;
+}
+@media screen and (max-width: 768px) {
+  .testimonials-carousel .testimonial-card{
+    min-height: 21rem;
+  }
+  .testimonials-carousel .testimonial-card:not(:last-child)::after{
+      right: -1.5rem;
+  }
+  .testimonial-media img{
+    aspect-ratio: 200 / 200;
+  }
+  .testimonial-media{
+    aspect-ratio: 200 / 200;
+  }
+}
