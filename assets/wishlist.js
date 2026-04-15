@@ -1,1 +1,213 @@
-const LOCAL_STORAGE_WISHLIST_KEY="shopify-wishlist",LOCAL_STORAGE_DELIMITER=",",BUTTON_ACTIVE_CLASS="active",GRID_LOADED_CLASS="loaded",selectors={button:".button-wishlist > button",grid:"[grid-wishlist]",productCard:".product-content-card"};document.addEventListener("DOMContentLoaded",()=>{initButtons(),initGrid();let t=getWishlist();updateWishlistCount(t.length)}),document.addEventListener("shopify-wishlist:updated",t=>{let e=t?.detail?.wishlist||getWishlist();initGrid(e)});const fetchProductCardHTML=t=>{let e=`/products/${t}?view=wishlist`;return fetch(e).then(t=>t.text()).then(t=>{let e=new DOMParser().parseFromString(t,"text/html");return e.querySelector(selectors.productCard)?.outerHTML||""}).catch(t=>console.error("wishlist fetch error",t))},setupGrid=async(t,e=getWishlist())=>{let i=await Promise.all(e.map(fetchProductCardHTML));t.innerHTML=i.join(""),t.classList.add("loaded"),initButtons(),window.initButtonsCompare&&window.initButtonsCompare(),window.wpbingo?.countdown&&window.wpbingo.countdown(),window.wpbingo?.click_atribute_image&&window.wpbingo.click_atribute_image(),document.querySelector(".bwp_currency")&&e.length>0&&"undefined"!=typeof Currency&&Currency.Currency_customer&&Currency.Currency_customer(!0),window.ajaxCart?.init&&window.ajaxCart.init(),document.dispatchEvent(new CustomEvent("shopify-wishlist:init-product-grid",{detail:{wishlist:e}}));let s=document.querySelector(".wishlist__grid"),r=document.querySelector(".wishlist_empty");s&&s.classList.remove("loading_wishlist"),r&&(e.length>0?r.classList.add("hidden"):r.classList.remove("hidden"))},setupButtons=t=>{t.forEach(t=>{let e=t.dataset.productHandle;if(!e)return;let i=wishlistContains(e);t.classList.toggle(BUTTON_ACTIVE_CLASS,i);let s=(t,e)=>{let i=window.strings?.remove_wishlist??"Remove From Wishlist",s=window.strings?.wishlist??"Add to Wishlist",r=e?i:s,n=t.querySelector("span");n&&(n.textContent=r);let o=t.closest(".button-wishlist");o&&o.setAttribute("data-title",r)};s(t,i),t.onclick=i=>{i.preventDefault(),i.stopPropagation(),updateWishlist(e),t.classList.add("load-wishlist"),setTimeout(()=>{t.classList.remove("load-wishlist");let i=wishlistContains(e);t.classList.toggle(BUTTON_ACTIVE_CLASS,i),s(t,i)},700)}})},initGrid=(t=getWishlist())=>{let e=document.querySelector(selectors.grid);e&&setupGrid(e,t)},initButtons=t=>{let e=t?document.querySelector(t):document;if(!e)return;let i=e.querySelectorAll(selectors.button);i.length&&(setupButtons(i),document.dispatchEvent(new CustomEvent("shopify-wishlist:init-buttons",{detail:{wishlist:getWishlist()}})))},getWishlist=()=>{let t=localStorage.getItem(LOCAL_STORAGE_WISHLIST_KEY);return t?t.split(","):[]},setWishlist=t=>{let e=t.join(",");return t.length?localStorage.setItem(LOCAL_STORAGE_WISHLIST_KEY,e):localStorage.removeItem(LOCAL_STORAGE_WISHLIST_KEY),document.dispatchEvent(new CustomEvent("shopify-wishlist:updated",{detail:{wishlist:t}})),e},updateWishlist=t=>{let e=getWishlist(),i=e.indexOf(t);return -1===i?e.push(t):e.splice(i,1),updateWishlistCount(e.length),setWishlist(e)},updateWishlistCount=t=>{let e=document.querySelectorAll("[data-count-wishlist] .count");e.forEach(e=>e.innerHTML=`(${t})`)},wishlistContains=t=>getWishlist().includes(t);class WishBuyButton extends HTMLElement{constructor(){super()}connectedCallback(){this.form=this.querySelector("form"),this.form&&this.form.addEventListener("submit",this.onSubmitHandler.bind(this))}async onSubmitHandler(t){t.preventDefault();let e=this.querySelector('[type="submit"]');e&&(e.setAttribute("aria-disabled","true"),e.classList.add("loading"));let i=new FormData(this.form);i.append("sections","cart-drawer,cart-icon-bubble"),i.append("sections_url",window.location.pathname);try{let s=await fetch(`${window.Shopify.routes.root}cart/add.js`,{method:"POST",headers:{Accept:"application/json"},body:i}),r=await s.json();if(!s.ok)throw Error(r.description||"Cart error");this.updateCartUI(r.sections);let n=this.closest(".product-card")||this.closest(".product-content-card"),o=n?.querySelector(".button-wishlist button");o&&o.click()}catch(l){console.error("WishBuyButton Error:",l)}finally{e&&(e.removeAttribute("aria-disabled"),e.classList.remove("loading"))}}updateCartUI(t){let e=document.querySelector("cart-drawer");e&&t["cart-drawer"]&&(e.renderContents({sections:t}),e.classList.remove("is-empty"),e.open());let i=document.querySelector(".cart-icon-bubble"),s=t["cart-icon-bubble"];if(i&&s){let r=new DOMParser,n=r.parseFromString(s,"text/html"),o=n.querySelector(".cart-icon-bubble")?.innerHTML||n.body.innerHTML;i.innerHTML=`(${o})`}}}customElements.get("wish-buy-button")||customElements.define("wish-buy-button",WishBuyButton);
+// ===============================
+// WISHLIST CONSTANTS
+// ===============================
+const LOCAL_STORAGE_WISHLIST_KEY = 'shopify-wishlist';
+const LOCAL_STORAGE_DELIMITER = ',';
+const BUTTON_ACTIVE_CLASS = 'active';
+const GRID_LOADED_CLASS = 'loaded';
+
+const $ = window.jQuery || null;
+
+const selectors = {
+  button: '.button-wishlist > button',
+  grid: '[grid-wishlist]',
+  productCard: '.product-content-card',
+};
+
+// ===============================
+// UPDATE COUNT (ALWAYS SHOW 0)
+// ===============================
+function updateWishlistCount(wishlist) {
+  const count = wishlist.length || 0;
+
+  // jQuery
+  if ($) {
+    $('[data-count-wishlist] .count').html(`(${count})`);
+  }
+
+  // Vanilla fallback
+  const el = document.querySelector('[data-count-wishlist] .count');
+  if (el) {
+    el.innerHTML = `${count}`;
+  }
+}
+
+// ===============================
+// INIT
+// ===============================
+document.addEventListener('DOMContentLoaded', () => {
+  initButtons();
+  initGrid();
+
+  const wishlist = getWishlist();
+  updateWishlistCount(wishlist); // ✅ always shows (0)
+});
+
+// ===============================
+// EVENT: WISHLIST UPDATED
+// ===============================
+document.addEventListener('shopify-wishlist:updated', (event) => {
+  const wishlist = event?.detail?.wishlist || getWishlist();
+
+  initGrid(wishlist);
+  updateWishlistCount(wishlist); // ✅ update count properly
+});
+
+// ===============================
+// FETCH PRODUCT CARD
+// ===============================
+const fetchProductCardHTML = (handle) => {
+  const url = `/products/${handle}?view=wishlist`;
+
+  return fetch(url)
+    .then(res => res.text())
+    .then(res => {
+      const doc = new DOMParser().parseFromString(res, 'text/html');
+      return doc.querySelector(selectors.productCard)?.outerHTML || "";
+    })
+    .catch((err) => console.error('wishlist fetch error', err));
+};
+
+// ===============================
+// GRID SETUP
+// ===============================
+const setupGrid = async (grid, wishlist = getWishlist()) => {
+  const responses = await Promise.all(wishlist.map(fetchProductCardHTML));
+  grid.innerHTML = responses.join('');
+  grid.classList.add(GRID_LOADED_CLASS);
+
+  initButtons();
+
+  if (window.initButtonsCompare) initButtonsCompare();
+  if (window.wpbingo?.countdown) window.wpbingo.countdown();
+  if (window.wpbingo?.click_atribute_image) window.wpbingo.click_atribute_image();
+
+  if ($ && $('.bwp_currency').length > 0 && wishlist.length > 0) {
+    if (typeof Currency !== 'undefined' && Currency.Currency_customer) {
+      Currency.Currency_customer(true);
+    }
+  }
+
+  if (window.ajaxCart?.init) ajaxCart.init();
+
+  document.dispatchEvent(new CustomEvent('shopify-wishlist:init-product-grid', {
+    detail: { wishlist }
+  }));
+
+  if ($) {
+    $('.wishlist__grid').removeClass('loading_wishlist');
+
+    if (wishlist.length > 0) {
+      $('.wishlist_empty').addClass('hidden');
+    } else {
+      $('.wishlist_empty').removeClass('hidden');
+    }
+  }
+};
+
+// ===============================
+// BUTTON SETUP
+// ===============================
+const setupButtons = (buttons) => {
+  buttons.forEach((button) => {
+    const productHandle = button.dataset.productHandle;
+    if (!productHandle) return;
+
+    if (wishlistContains(productHandle)) {
+      button.classList.add(BUTTON_ACTIVE_CLASS);
+    }
+
+    const span_button_text = button.querySelector('span');
+    if (span_button_text) {
+      span_button_text.textContent = button.classList.contains(BUTTON_ACTIVE_CLASS)
+        ? (window.strings?.remove_wishlist ?? 'Remove From Wishlist')
+        : (window.strings?.wishlist ?? 'Add to Wishlist');
+    }
+
+    button.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+
+      updateWishlist(productHandle);
+      button.classList.add('load-wishlist');
+
+      setTimeout(() => {
+        button.classList.remove('load-wishlist');
+        button.classList.toggle(BUTTON_ACTIVE_CLASS);
+
+        const parent = button.closest('.button-wishlist');
+        const span_button = button.querySelector('span');
+        const isAdded = button.classList.contains(BUTTON_ACTIVE_CLASS);
+
+        const removeText = window.strings?.remove_wishlist ?? 'Remove From Wishlist';
+        const addText = window.strings?.wishlist ?? 'Add to Wishlist';
+
+        if (parent) {
+          parent.setAttribute('data-title', isAdded ? removeText : addText);
+        }
+
+        if (span_button) {
+          span_button.textContent = isAdded ? removeText : addText;
+        }
+      }, 700);
+    });
+  });
+};
+
+// ===============================
+// INIT HELPERS
+// ===============================
+const initGrid = (wishlist = getWishlist()) => {
+  const grid = document.querySelector(selectors.grid);
+  if (grid) setupGrid(grid, wishlist);
+};
+
+const initButtons = (element) => {
+  const container = element ? document.querySelector(element) : document;
+  if (!container) return;
+
+  const buttons = container.querySelectorAll(selectors.button);
+  if (!buttons.length) return;
+
+  setupButtons(buttons);
+
+  document.dispatchEvent(new CustomEvent('shopify-wishlist:init-buttons', {
+    detail: { wishlist: getWishlist() }
+  }));
+};
+
+// ===============================
+// STORAGE
+// ===============================
+const getWishlist = () => {
+  const list = localStorage.getItem(LOCAL_STORAGE_WISHLIST_KEY);
+  return list ? list.split(LOCAL_STORAGE_DELIMITER) : [];
+};
+
+const setWishlist = (array) => {
+  const wishlist = array.join(LOCAL_STORAGE_DELIMITER);
+
+  if (array.length)
+    localStorage.setItem(LOCAL_STORAGE_WISHLIST_KEY, wishlist);
+  else
+    localStorage.removeItem(LOCAL_STORAGE_WISHLIST_KEY);
+
+  document.dispatchEvent(new CustomEvent('shopify-wishlist:updated', {
+    detail: { wishlist: array }
+  }));
+
+  return wishlist;
+};
+
+const updateWishlist = (handle) => {
+  const wishlist = getWishlist();
+  const index = wishlist.indexOf(handle);
+
+  if (index === -1) wishlist.push(handle);
+  else wishlist.splice(index, 1);
+
+  return setWishlist(wishlist); // ✅ event handles count update
+};
+
+const wishlistContains = (handle) => getWishlist().includes(handle);
+const resetWishlist = () => setWishlist([]);

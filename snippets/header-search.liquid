@@ -8,7 +8,7 @@
   {% render 'header-search', input_id: 'My-Id'%}
 {% endcomment %}
 
-<search-details-modal class="header__search">
+<search-details-modal class="header__search {{ class }}">
   <details class="flex">
     <summary
       class="header__icon header__icon--search header__icon--summary link focus-inset modal__toggle flex"
@@ -19,13 +19,14 @@
         <span class="svg-wrapper">
          {% render 'icons', icon: 'search' %}
         </span>
+        <div class="body-text flex icon-text medium-hide small-hide">Find</div>
         <span class="svg-wrapper header__icon-close hidden large-up-hide mediu-hide">
           {{- 'icon-close.svg' | inline_asset_content -}}
         </span>
       </span>
     </summary>
     <div
-      class="search-modal modal__content gradient"
+      class="search-modal modal__content"
       role="dialog"
       aria-modal="true"
       aria-label="{{ 'general.search.search' | t }}"
@@ -43,7 +44,7 @@
         <form action="{{ routes.search_url }}" method="get" role="search" class="search search-modal__form">
           <div class="field">
             <input
-              class="search__input field__input body-text-v2"
+              class="search__input field__input body-text-medium-v2"
               id="{{ input_id }}"
               type="search"
               name="q"
@@ -71,9 +72,9 @@
 
               <button
                   type="button"
-                  class="search-modal__close-button modal__close-button link link--text focus-inset"
+                  class="search-modal__close-button modal__close-button link link--text focus-inset hidden"
                   aria-label="{{ 'accessibility.close' | t }}"
-                >
+                hidden>
                   {% render 'icons', icon: 'search-close'%}
                 </button>
             </div>
@@ -110,7 +111,7 @@
           type="button"
           class=" hidden search-modal__close-button modal__close-button link link--text focus-inset"
           aria-label="{{ 'accessibility.close' | t }}"
-        >
+        hidden>
           <span class="svg-wrapper">
             {{- 'icon-close.svg' | inline_asset_content -}}
           </span>
