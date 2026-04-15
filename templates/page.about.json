@@ -1,0 +1,188 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top_desktop": 50,
+        "padding_bottom_desktop": 70,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 30
+      }
+    },
+    "hero_banner_HCfKfw": {
+      "type": "hero-banner",
+      "name": "Hero Banner",
+      "settings": {
+        "enable_tranprent_header": true,
+        "text_color": "#ffffff",
+        "button_background_color": "#ffffff",
+        "ebable_spacing": false,
+        "button_color": "#ffffff",
+        "media_type_desktop": "image",
+        "media_type_mobile": "image",
+        "title": "About Us",
+        "subheading": "",
+        "description": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>",
+        "link_text": "",
+        "link": "",
+        "button_type": "outline",
+        "text_align": "center-center",
+        "overlay_opacity": "",
+        "section_height": "750px",
+        "mobile_height": "750px"
+      }
+    },
+    "image_and_text_YKJ9p3": {
+      "type": "image-and-text",
+      "name": "Image And Text",
+      "settings": {
+        "background_color": "#f5efe6",
+        "content_background_color": "",
+        "text_color": "#000000",
+        "button_color": "#000000",
+        "enable_padding": true,
+        "media_position_desktop": "left",
+        "media_position_mobile": "top",
+        "auto_height": false,
+        "media_height_desktop": 420,
+        "media_height_mobile": 210,
+        "text_align": "left",
+        "text_align_mobile": "left",
+        "heading_text": "The People Behind this",
+        "description": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>",
+        "link_text": "",
+        "link": "",
+        "padding_top_desktop": 35,
+        "padding_bottom_desktop": 35,
+        "padding_top_mobile": 30,
+        "padding_bottom_mobile": 15
+      }
+    },
+    "image_and_text_ymjWMp": {
+      "type": "image-and-text",
+      "name": "Image And Text",
+      "settings": {
+        "background_color": "#f5efe6",
+        "content_background_color": "",
+        "text_color": "#000000",
+        "button_color": "#000000",
+        "enable_padding": true,
+        "media_position_desktop": "right",
+        "media_position_mobile": "top",
+        "auto_height": false,
+        "media_height_desktop": 420,
+        "media_height_mobile": 210,
+        "text_align": "left",
+        "text_align_mobile": "left",
+        "heading_text": "This <em>for </em>All",
+        "description": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>",
+        "link_text": "",
+        "link": "",
+        "padding_top_desktop": 35,
+        "padding_bottom_desktop": 35,
+        "padding_top_mobile": 15,
+        "padding_bottom_mobile": 15
+      }
+    },
+    "two_image_grid_zDzcqT": {
+      "type": "two-image-grid",
+      "blocks": {
+        "image_HffLaa": {
+          "type": "Image",
+          "settings": {
+            "heading": "Designer name",
+            "subheading": "The Designer"
+          }
+        },
+        "image_f43arF": {
+          "type": "Image",
+          "settings": {
+            "heading": "Maker Name",
+            "subheading": "The Maker"
+          }
+        }
+      },
+      "block_order": [
+        "image_HffLaa",
+        "image_f43arF"
+      ],
+      "name": "Two Image Grid",
+      "settings": {
+        "heading_text_color": "#000000",
+        "text_color": "#000000",
+        "heading": "Our Team",
+        "padding_top_desktop": 35,
+        "padding_bottom_desktop": 35,
+        "padding_top_mobile": 15,
+        "padding_bottom_mobile": 15
+      }
+    },
+    "text_with_content_qj7Q7V": {
+      "type": "text-with-content",
+      "blocks": {
+        "text_G8Fpag": {
+          "type": "text",
+          "settings": {
+            "heading": "Dispatch & Shipping",
+            "description": "<p>For made-to-order, please allow 7-14 business days (excluding weekends) for processing before your order is shipped. For ready-to-ship products, processing generally takes 5-7 business days. If you have a specific deadline or require expedited shipping, we may be able to assist. Please email us at <a href=\"mailto:admin@gmail.com\" target=\"_blank\" title=\"mailto:admin@gmail.com\">admin@gmail.com</a>.</p>"
+          }
+        },
+        "text_7WMjAa": {
+          "type": "text",
+          "settings": {
+            "heading": "Free Shipping",
+            "description": "<p>Shipping is on us for all orders worldwide. For USA only, we cover all customs duties and related taxes.</p>"
+          }
+        },
+        "text_wB8XYE": {
+          "type": "text",
+          "settings": {
+            "heading": "Returns",
+            "description": "<p>Simply contact us within 7 days of delivery, and ensure items are shipped back to us within 14 days of delivery.**</p>"
+          }
+        }
+      },
+      "block_order": [
+        "text_G8Fpag",
+        "text_7WMjAa",
+        "text_wB8XYE"
+      ],
+      "name": "Text With Content",
+      "settings": {
+        "heading_text_color": "#000000",
+        "text_color": "#000000",
+        "tile_background_color": "#fff8ee",
+        "heading": "",
+        "padding_top_desktop": 35,
+        "padding_bottom_desktop": 35,
+        "padding_top_mobile": 15,
+        "padding_bottom_mobile": 0
+      }
+    },
+    "1765951286e7d005c9": {
+      "type": "apps",
+      "settings": {
+        "include_margins": true
+      }
+    }
+  },
+  "order": [
+    "main",
+    "hero_banner_HCfKfw",
+    "image_and_text_YKJ9p3",
+    "image_and_text_ymjWMp",
+    "two_image_grid_zDzcqT",
+    "text_with_content_qj7Q7V",
+    "1765951286e7d005c9"
+  ]
+}

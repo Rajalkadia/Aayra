@@ -1,0 +1,85 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top_desktop": 50,
+        "padding_bottom_desktop": 70,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 15
+      }
+    },
+    "main_faq_XTx6Gx": {
+      "type": "main-faq",
+      "blocks": {
+        "faq_4Mg4GJ": {
+          "type": "faq",
+          "settings": {
+            "question": "Diamond Heart Pendant Necklace, 14k Solid Gold, Natural Diamonds, Everyday Stackable Jewelry",
+            "answer": "<p>Diamond Heart Pendant Necklace, 14k Solid Gold, Natural Diamonds, Everyday Stackable Jewelry Diamond Heart Pendant Necklace, 14k Solid Gold, Natural Diamonds, Everyday Stackable Jewelry Diamond Heart Pendant Necklace, 14k Solid Gold, Natural Diamonds, Everyday Stackable Jewelry Diamond Heart Pendant Necklace, 14k Solid Gold, Natural Diamonds, Everyday Stackable Jewelry</p>"
+          }
+        },
+        "faq_bDYxt7": {
+          "type": "faq",
+          "settings": {
+            "question": "Diamond Heart Pendant Necklace, 14k Solid Gold, Natural Diamonds, Everyday Stackable Jewelry",
+            "answer": "<p>Diamond Heart Pendant Necklace, 14k Solid Gold, Natural Diamonds, Everyday Stackable Jewelry Diamond Heart Pendant Necklace, 14k Solid Gold, Natural Diamonds, Everyday Stackable Jewelry Diamond Heart Pendant Necklace, 14k Solid Gold, Natural Diamonds, Everyday Stackable Jewelry Diamond Heart Pendant Necklace, 14k Solid Gold, Natural Diamonds, Everyday Stackable Jewelry</p>"
+          }
+        },
+        "faq_NN8qNJ": {
+          "type": "faq",
+          "settings": {
+            "question": "Diamond Heart Pendant Necklace, 14k Solid Gold, Natural Diamonds, Everyday Stackable Jewelry",
+            "answer": "<p>Diamond Heart Pendant Necklace, 14k Solid Gold, Natural Diamonds, Everyday Stackable Jewelry Diamond Heart Pendant Necklace, 14k Solid Gold, Natural Diamonds, Everyday Stackable Jewelry Diamond Heart Pendant Necklace, 14k Solid Gold, Natural Diamonds, Everyday Stackable Jewelry Diamond Heart Pendant Necklace, 14k Solid Gold, Natural Diamonds, Everyday Stackable Jewelry</p>"
+          }
+        },
+        "faq_pbYxCK": {
+          "type": "faq",
+          "settings": {
+            "question": "Diamond Heart Pendant Necklace, 14k Solid Gold, Natural Diamonds, Everyday Stackable Jewelry",
+            "answer": "<p>Diamond Heart Pendant Necklace, 14k Solid Gold, Natural Diamonds, Everyday Stackable Jewelry Diamond Heart Pendant Necklace, 14k Solid Gold, Natural Diamonds, Everyday Stackable Jewelry Diamond Heart Pendant Necklace, 14k Solid Gold, Natural Diamonds, Everyday Stackable Jewelry Diamond Heart Pendant Necklace, 14k Solid Gold, Natural Diamonds, Everyday Stackable Jewelry</p>"
+          }
+        },
+        "faq_9biL7k": {
+          "type": "faq",
+          "settings": {
+            "question": "Diamond Heart Pendant Necklace, 14k Solid Gold, Natural Diamonds, Everyday Stackable Jewelry",
+            "answer": "<p>Diamond Heart Pendant Necklace, 14k Solid Gold, Natural Diamonds, Everyday Stackable Jewelry Diamond Heart Pendant Necklace, 14k Solid Gold, Natural Diamonds, Everyday Stackable Jewelry Diamond Heart Pendant Necklace, 14k Solid Gold, Natural Diamonds, Everyday Stackable Jewelry Diamond Heart Pendant Necklace, 14k Solid Gold, Natural Diamonds, Everyday Stackable Jewelry</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_4Mg4GJ",
+        "faq_bDYxt7",
+        "faq_NN8qNJ",
+        "faq_pbYxCK",
+        "faq_9biL7k"
+      ],
+      "name": "Main FAQ",
+      "settings": {
+        "heading_text_color": "#000000",
+        "text_color": "#000000",
+        "answer_text_color": "#777777",
+        "heading_text": "FAQs",
+        "padding_top_desktop": 50,
+        "padding_bottom_desktop": 55,
+        "padding_top_mobile": 16,
+        "padding_bottom_mobile": 15
+      }
+    }
+  },
+  "order": [
+    "main",
+    "main_faq_XTx6Gx"
+  ]
+}

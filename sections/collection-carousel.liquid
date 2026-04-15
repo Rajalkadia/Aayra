@@ -1,0 +1,239 @@
+{{ 'collection-carousel.css' | asset_url | stylesheet_tag }}
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top_mobile }}px;
+    padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+  }
+
+  @media screen and (min-width: 769px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top_desktop }}px;
+      padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
+    }
+  }
+  #collection-carousel-{{ section.id }}{
+    --color-foreground: {{ section.settings.text_color.red }}, {{ section.settings.text_color.green }},{{ section.settings.text_color.blue }};
+    --color-background: {{ section.settings.background_color.red }}, {{ section.settings.background_color.green }},{{ section.settings.background_color.blue }};
+    --color-link : var(--color-foreground);
+  }
+{%- endstyle -%}
+<section id="collection-carousel-{{ section.id }}" class="collection-carousel section-{{ section.id }}-padding ">
+  {% if section.settings.heading_text != blank
+    or section.settings.link != blank
+    and section.settings.link_text != blank
+  %}
+    <div class="heading-wrapper page-width flex">
+      {% if section.settings.heading_text != blank %}
+        <div
+          class="section-heading uppercase body-text-large small-body-text-large"
+          style="color: {{ section.settings.heading_text_color  }}"
+        >
+          {{ section.settings.heading_text }}
+        </div>
+      {% endif %}
+      {% if section.settings.link != blank and section.settings.link_text != blank %}
+        <a
+          class="link uppercase body-text-v2 small-body-text-v2"
+          href="{{ section.settings.link  }}"
+          style="color: {{  section.settings.button_color }}"
+        >
+          {{ section.settings.link_text -}}
+        </a>
+      {% endif %}
+    </div>
+  {% endif %}
+  <collection-carousel
+    data-desktopp-spacing="20"
+    data-mobile-spacing="10"
+    data-slide-par-view-desktop="4"
+    data-slide-par-view-mobile="1.2"
+    data-after-offset-desktop="20"
+    data-after-offset-mobile="0"
+  >
+    <div class="swiper js-collection-carousel">
+      <div class="swiper-wrapper {%  if section.blocks.size > 4 %} carousel-enable {% endif %}">
+        {% for block in section.blocks %}
+          <div class="swiper-slide">
+            {% if block.settings.link != blank %}
+              <a class="link text-decoration-none w-100" href="{{ block.settings.link.url }}">
+            {% endif %}
+            <div class="collection-media-wrapper">
+              <div class="collection-media relative flex">
+                {% if block.settings.collection_image != blank %}
+                  {{
+                    block.settings.collection_image
+                    | image_url: width: 1200
+                    | image_tag:
+                      sizes: '100vw',
+                      widths: '375, 550, 750, 1100, 1600, 2000, 3500',
+                      loading: 'lazy',
+                      decoding: 'async'
+                  }}
+                {% else %}
+                 {% liquid
+                      assign placeholder_index = forloop.index0 | modulo: 4 | plus: 1
+                      assign placeholder_name = 'collection-apparel-' | append: placeholder_index
+                    %}
+
+                    {{ placeholder_name | placeholder_svg_tag: 'placeholder-svg' }}
+                {% endif %}
+                <div
+                  class="collection-name body-text-medium small-body-text-medium flex"
+                  style="color: {{ section.settings.collection_text_color }}"
+                >
+                  {{ block.settings.collection_name | default: block.settings.link.title }}
+                  {% render 'icons', icon: 'collection-icon' %}
+                </div>
+              </div>
+              {% if block.settings.bottom_text != blank %}
+                <div class="collection-bottom-text heading-text-large-thin small-heading-text-large-thin center">
+                  {{ block.settings.bottom_text }}
+                </div>
+              {% endif %}
+            </div>
+            {% if block.settings.link != blank %}
+              </a>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </collection-carousel>
+</section>
+
+
+{% schema %}
+{
+  "name": "t:additionl.collection_section.collection_carousel",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "t:additionl.background_color",
+      "default": "#F5EFE6"
+    },
+    {
+      "type": "color",
+      "id": "heading_text_color",
+      "label": "t:additionl.heading_color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "t:additionl.text_color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "collection_text_color",
+      "label": "t:additionl.collection_section.collection_text_color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "button_color",
+      "label": "t:additionl.button_label",
+      "default": "#000000"
+    },
+    {
+      "type": "text",
+      "id": "heading_text",
+      "label": "t:additionl.heading"
+    },
+    {
+      "type": "text",
+      "id": "link_text",
+      "label": "t:additionl.link_text"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "t:additionl.link"
+    },
+    {
+      "type": "header",
+      "content": "t:additionl.padding_desktop"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "label": "t:additionl.padding_top_desktop",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 70
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "label": "t:additionl.padding_bottom_desktop",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 35
+    },
+    {
+      "type": "header",
+      "content": "t:additionl.padding_mobile"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "t:additionl.padding_top_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 25
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "t:additionl.padding_bottom_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 25
+    }
+  ],
+  "blocks": [
+    {
+      "type": "collection",
+      "name": "t:additionl.collection",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "collection_image",
+          "label": "t:additionl.collection_section.collection_iamge"
+        },
+        {
+          "type": "text",
+          "id": "collection_name",
+          "label": "t:additionl.collection_section.collection_name"
+        },
+        {
+          "type": "html",
+          "id": "bottom_text",
+          "label": "t:additionl.collection_section.bottom_text",
+          "info": "t:additionl.collection_section.bottom_text_info"
+        },
+        {
+          "type": "collection",
+          "id": "link",
+          "label": "t:additionl.collection"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:additionl.collection_section.collection_carousel"
+    }
+  ]
+}
+{% endschema %}

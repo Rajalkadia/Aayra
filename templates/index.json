@@ -1,0 +1,210 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero_banner_r77jzQ": {
+      "type": "hero-banner",
+      "name": "Hero Banner Carousel",
+      "settings": {
+        "enable_tranprent_header": false,
+        "text_color": "#000000",
+        "button_background_color": "#ffffff",
+        "ebable_spacing": false,
+        "button_color": "#000000",
+        "media_type_desktop": "image",
+        "media_type_mobile": "image",
+        "title": "",
+        "subheading": "",
+        "description": "",
+        "link_text": "",
+        "link": "#",
+        "button_type": "solid",
+        "text_align": "center-center",
+        "overlay_opacity": "rgba(0,0,0,0)",
+        "section_height": "750px",
+        "mobile_height": "750px"
+      }
+    },
+    "collection_carousel_bdeAJx": {
+      "type": "collection-carousel",
+      "blocks": {
+        "collection_deeUnG": {
+          "type": "collection",
+          "settings": {
+            "collection_name": "Rings",
+            "bottom_text": "Crafted to steal the <span>spotlight.</span>",
+            "link": "all-rings"
+          }
+        },
+        "collection_f9Ldhg": {
+          "type": "collection",
+          "settings": {
+            "collection_name": "Earrings",
+            "bottom_text": "Designed to frame  <span> your charm.</span>",
+            "link": "earrings"
+          }
+        },
+        "collection_amFJzF": {
+          "type": "collection",
+          "settings": {
+            "collection_name": "Bracelets",
+            "bottom_text": "Grace that wraps <span>around you.</span>",
+            "link": "diamond-bracelets"
+          }
+        },
+        "collection_NQENgy": {
+          "type": "collection",
+          "settings": {
+            "collection_name": "Necklaces",
+            "bottom_text": "Adorn your story <span>beautifully.</span>",
+            "link": "charm-necklaces"
+          }
+        }
+      },
+      "block_order": [
+        "collection_deeUnG",
+        "collection_f9Ldhg",
+        "collection_amFJzF",
+        "collection_NQENgy"
+      ],
+      "name": "Collection Carousel",
+      "settings": {
+        "background_color": "#f5efe6",
+        "heading_text_color": "#000000",
+        "text_color": "#000000",
+        "collection_text_color": "#000000",
+        "button_color": "#000000",
+        "heading_text": "collections",
+        "link_text": "View All",
+        "link": "shopify://collections",
+        "padding_top_desktop": 70,
+        "padding_bottom_desktop": 35,
+        "padding_top_mobile": 30,
+        "padding_bottom_mobile": 15
+      }
+    },
+    "scrolling_promotion_RwBDRU": {
+      "type": "scrolling-promotion",
+      "blocks": {
+        "scrolling_promotion_NXmtdz": {
+          "type": "scrolling_promotion",
+          "settings": {
+            "text": "Natural Diamonds",
+            "link": ""
+          }
+        },
+        "scrolling_promotion_grqxq9": {
+          "type": "scrolling_promotion",
+          "settings": {
+            "text": "14K Solid Gold",
+            "link": ""
+          }
+        },
+        "scrolling_promotion_hicApW": {
+          "type": "scrolling_promotion",
+          "settings": {
+            "text": "Sustainable Manufacturing",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "scrolling_promotion_NXmtdz",
+        "scrolling_promotion_grqxq9",
+        "scrolling_promotion_hicApW"
+      ],
+      "disabled": true,
+      "name": "Scrolling Promotion",
+      "settings": {
+        "color_background": "#000000",
+        "color_text": "#ffffff",
+        "enable_scrooling_seperator": true,
+        "scrooling_speed": 35
+      }
+    },
+    "collection_product_carousel_Wtfp6d": {
+      "type": "collection-product-carousel",
+      "disabled": true,
+      "name": "Product Carousel",
+      "settings": {
+        "background_color": "#f5efe6",
+        "heading_text_color": "#000000",
+        "text_color": "#000000",
+        "button_color": "#000000",
+        "badge_background_color": "#00000080",
+        "badge_text_color": "#ffffff",
+        "heading_text": "Trending",
+        "link_text": "view All",
+        "collection": "all-charms",
+        "padding_top_desktop": 35,
+        "padding_bottom_desktop": 35,
+        "padding_top_mobile": 15,
+        "padding_bottom_mobile": 30
+      }
+    },
+    "shop_the_look_di4hUc": {
+      "type": "shop-the-look",
+      "blocks": {
+        "product_DgiNxU": {
+          "type": "product",
+          "settings": {
+            "shop_product": "love-diamond-necklace-14kt-solid-gold-pendant-necklace-with-script-inspirational-jewelry-handcrafted-jewelry-gift-for-her-word-necklace",
+            "dot_position_x": 46,
+            "dot_position_y": 24
+          }
+        },
+        "product_DHMaWb": {
+          "type": "product",
+          "settings": {
+            "shop_product": "evil-eye-medallion-diamond-charm-14k-solid-gold-natural-diamond-layering-pendant-protection-necklace-ready-to-ship-certified-jewelry",
+            "dot_position_x": 50,
+            "dot_position_y": 43
+          }
+        },
+        "product_n6T3Bq": {
+          "type": "product",
+          "settings": {
+            "shop_product": "heart-initial-medallion-diamond-necklace-14k-solid-gold-natural-diamonds-everyday-halo-pendant-personalised-letter-charm-ready-to-ship",
+            "dot_position_x": 48,
+            "dot_position_y": 75
+          }
+        }
+      },
+      "block_order": [
+        "product_DgiNxU",
+        "product_DHMaWb",
+        "product_n6T3Bq"
+      ],
+      "name": "Shop The Look",
+      "settings": {
+        "background_color": "#f5efe6",
+        "text_color": "#000000",
+        "badge_background_color": "#00000080",
+        "badge_text_color": "#ffffff",
+        "inner_background": "#f5efe6",
+        "product_part_background": "#fff8ee",
+        "product_part_svg_color": "#feebcf",
+        "heading": "Shop the<em> look!</em>",
+        "subheading_heading": "Re create roy solitaire natural diamond ring",
+        "padding_top_desktop": 35,
+        "padding_bottom_desktop": 35,
+        "padding_top_mobile": 15,
+        "padding_bottom_mobile": 30
+      }
+    }
+  },
+  "order": [
+    "hero_banner_r77jzQ",
+    "collection_carousel_bdeAJx",
+    "scrolling_promotion_RwBDRU",
+    "collection_product_carousel_Wtfp6d",
+    "shop_the_look_di4hUc"
+  ]
+}

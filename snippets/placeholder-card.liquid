@@ -1,0 +1,23 @@
+{% liquid
+  if index
+    assign index_number = index | modulo: 4 | plus: 1
+
+  else
+    assign index_number = 1
+  endif
+  
+  assign placeholder_name = 'product-apparel-' | append: index_number
+%}
+
+<a class="link text-decoration-none w-100" href="#">
+  <div class="product-media relative flex">
+    <div class="button-wishlist mobile" data-title="wishlist">
+      <button type="button" aria-label="wishlist" >
+        {% render 'icons', icon: 'wishlist' %}
+      </button>
+    </div>
+    <div class="product-media-inner flex relative w-100">
+      {{ placeholder_name | placeholder_svg_tag: 'placeholder-svg' }}
+    </div>
+  </div>
+</a>
