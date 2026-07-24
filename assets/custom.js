@@ -1478,3 +1478,138 @@ customElements.define('icon-with-text-section', IconWithText);
 
 
 
+class AttachmentField extends HTMLElement {
+  connectedCallback() {
+  this.inputField = this.querySelector("input");
+  this.placeholder = this.querySelector(".attachment-place-holder-text");
+  this.uploadButton = this.querySelector(".upload-button");
+  this.cancelButton = this.querySelector(".cancle-button");
+
+  this.uploadButton.addEventListener("click", () => this.inputField.click());
+
+  this.inputField.addEventListener("change", () => {
+    const file = this.inputField.files[0];
+    if (file) {
+      this.placeholder.textContent = file.name;
+      this.cancelButton.classList.remove("hidden");
+      this.uploadButton.classList.add("hidden");
+    }
+  });
+
+  this.cancelButton.addEventListener("click", () => {
+    this.inputField.value = "";
+    this.placeholder.textContent = "Attachments *";
+    this.cancelButton.classList.add("hidden");
+    this.uploadButton.classList.remove("hidden");
+  });
+}
+}
+
+customElements.define('attachment-field', AttachmentField);
+
+
+
+class RecentlyViewedProducts extends HTMLElement {
+  connectedCallback() {
+    this.currentProductHandle = this.dataset.productId;
+
+    this.trackCurrentProduct();
+    this.renderProducts();
+  }
+
+  trackCurrentProduct() {
+    if (!this.currentProductHandle) return;
+
+    let viewedProducts =
+      JSON.parse(localStorage.getItem('recently_viewed_products')) || [];
+    viewedProducts = viewedProducts.filter(
+      handle => handle !== this.currentProductHandle
+    );
+    viewedProducts.unshift(this.currentProductHandle);
+    viewedProducts = viewedProducts.slice(0, 12);
+
+    localStorage.setItem(
+      'recently_viewed_products',
+      JSON.stringify(viewedProducts)
+    );
+  }
+
+  getViewedProducts() {
+    try {
+      return (
+        JSON.parse(
+          localStorage.getItem('recently_viewed_products')
+        ) || []
+      );
+    } catch (e) {
+      return [];
+    }
+  }
+
+  async renderProducts() {
+    const viewedProducts = this.getViewedProducts().filter(
+      handle => handle !== this.currentProductHandle
+    );
+
+    if (!viewedProducts.length) {
+      this.style.display = 'none';
+      return;
+    }
+
+    const wrapper = this.querySelector(
+      '#recently-viewed-wrapper'
+    );
+
+    if (!wrapper) return;
+    const cards = await Promise.all(
+      viewedProducts.map(handle =>
+        this.fetchProductCard(handle)
+      )
+    );
+
+    const validCards = cards.filter(Boolean);
+
+    if (!validCards.length) {
+      this.style.display = 'none';
+      return;
+    }
+    wrapper.innerHTML = validCards
+      .map(
+        card => `
+          <div class="swiper-slide main-product">
+            ${card}
+          </div>
+        `
+      )
+      .join('');
+    document.dispatchEvent(
+      new CustomEvent('recentlyViewedLoaded')
+    );
+  }
+
+  async fetchProductCard(handle) {
+    try {
+      const response = await fetch(
+        `/products/${handle}?view=card`
+      );
+
+      if (!response.ok) return null;
+
+      return await response.text();
+    } catch (error) {
+      console.error(
+        'Recently viewed fetch error:',
+        error
+      );
+
+      return null;
+    }
+  }
+}
+
+if (!customElements.get('recently-viewd-products')) {
+  customElements.define(
+    'recently-viewd-products',
+    RecentlyViewedProducts
+  );
+}

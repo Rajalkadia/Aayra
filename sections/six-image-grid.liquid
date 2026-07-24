@@ -32,7 +32,11 @@
         {%  if forloop.index <= 4 %}
           <div class="collection-grid-item relative flex">
             <a class="text-decoration-none" href="{{ block.settings.link.url }}">
-            {{ block.settings.collection_image  | image_url: width: 2500, height:3500 | image_tag  }}
+              {% if block.settings.collection_image != blank %}
+                {{ block.settings.collection_image  | image_url: width: 2500, height:3500 | image_tag  }}
+              {% else %}
+                {{ 'collection-'| append: forloop.index  | placeholder_svg_tag }}
+              {% endif %}
             <div class="collection-name body-text-medium small-body-text-medium flex {%  if section.settings.text_align == 'center' %}justify-center {% endif %}" style="color: {{ section.settings.collection_text_color }}; "> 
               {{ block.settings.collection_name | default: block.settings.link.title }} 
             </div>
@@ -46,7 +50,11 @@
           {%  if forloop.index > 4 %}
             <div class="collection-grid-item relative flex">
                <a class="text-decoration-none" href="{{ block.settings.link.url }}">
-              {{ block.settings.collection_image  | image_url: width: 2500, height:3500 | image_tag  }}
+                {% if block.settings.collection_image != blank %}
+                  {{ block.settings.collection_image  | image_url: width: 2500, height:3500 | image_tag  }}
+                {% else %}
+                  {{ 'collection-'| append: forloop.index  | placeholder_svg_tag }}
+                {% endif %}
               <div class="collection-name body-text-medium small-body-text-medium flex {%  if section.settings.text_align == 'center' %}justify-center {% endif %}" style="color: {{ section.settings.collection_text_color }}; "> 
                 {{ block.settings.collection_name | default: block.settings.link.title }} 
               </div>
